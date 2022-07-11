@@ -42,7 +42,7 @@ const Navbar = () => {
 
                     <div className='flex justify-center'>
                         <div className='h-8 w-8 bg-gray-200 cursor-pointer rounded-full '>
-                            <img src={user.photoURL ? user.photoURL : 'https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png'} alt="profile" className='object-cover object-center w-full h-full rounded-full' />
+                            <img src={user ? user.photoURL : 'https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png'} alt="profile" className='object-cover object-center w-full h-full rounded-full' />
                         </div>
                     </div>
                 </div>

@@ -18,10 +18,10 @@ const OutfitHome = () => {
                     )
                         : (
                             <div className='w-11/12 h-72 border-dashed border-gray-400 border-4 flex flex-col justify-center items-center'>
-                                <p className='text-xl font-semibold text-gray-700'>No elegiste tu outfit aún</p>
+                                <p className='text-lg font-semibold text-gray-700'>No elegiste tu outfit aún</p>
                                 <Button 
                                     texto='Elegir uno'
-                                    mt='3'
+                                    mt='2'
                                 />
                             </div>
                         )}

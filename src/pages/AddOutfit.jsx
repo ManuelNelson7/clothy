@@ -1,13 +1,18 @@
-import React from 'react'
-import { ChevronLeftIcon } from '@heroicons/react/outline'
+import React, { useState } from 'react'
+import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
 
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
+import SelectClothing from '../components/SelectClothing'
 
 const AddOutfit = () => {
+    const [addClothing, setAddClothing] = useState(false)
+
     return (
         <>
+            {addClothing && <SelectClothing setAddClothing={setAddClothing} />}
+
             <div className='bg-gray-900 w-screen h-screen'>
 
                 {/* Barra */}
@@ -33,8 +38,11 @@ const AddOutfit = () => {
                 <div className="w-full pt-20 flex justify-center">
                     <div className="w-10/12">
                         <p className='text-white'>Agregar prendas</p>
-                        <div className="w-28 h-28 bg-gray-200 rounded-lg mt-4">
-
+                        <div
+                            onClick={() => setAddClothing(true)}
+                            className="w-28 h-28 cursor-pointer bg-gray-200 rounded-lg mt-4 flex justify-center items-center"
+                        >
+                            <PlusIcon className='h-8 w-8 text-gray-500' />
                         </div>
                     </div>
 

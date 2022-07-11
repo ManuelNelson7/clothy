@@ -15,29 +15,29 @@ const Login = () => {
 
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <img
                     className="mx-auto h-12 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                     alt="Workflow"
                 />
-                <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Inicia sesión en Clothy</h2>
-                <p className="mt-2 text-center text-sm text-gray-600">
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-white">Inicia sesión en Clothy</h2>
+                <p className="mt-2 text-center text-sm text-gray-200">
                     Sin necesidad de mails de confirmación ni contraseñas
                 </p>
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <div className="bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
 
                     <div className="mt-6">
                         <div className="relative">
                             <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-gray-300" />
+                                <div className="w-full border-t border-gray-600" />
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="px-2 bg-white text-gray-500">Continuar con</span>
+                                <span className="px-2 bg-gray-700 rounded-md text-white">Continuar con</span>
                             </div>
                         </div>
 

@@ -5,6 +5,7 @@ import AppContextProvider from './components/AppContext';
 import { fetchUser } from './utils/fetchUser';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import AddOutfit from './pages/AddOutfit';
 
 const App = () => {
 
@@ -13,7 +14,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/add-outfit" element={<AddOutfit />} />
 
         </Routes>
       </BrowserRouter>

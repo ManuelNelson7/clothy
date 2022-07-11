@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from './Button'
 
 const OutfitHome = () => {
     const [outfitChosen, setOutfitChosen] = useState(false)
@@ -18,9 +19,10 @@ const OutfitHome = () => {
                         : (
                             <div className='w-11/12 h-72 border-dashed border-gray-400 border-4 flex flex-col justify-center items-center'>
                                 <p className='text-xl font-semibold text-gray-700'>No elegiste tu outfit aún</p>
-                                <button className='bg-blue-900 text-white px-6 rounded-lg mt-3 py-2'>
-                                    Elegir uno
-                                </button>
+                                <Button 
+                                    texto='Elegir uno'
+                                    mt='3'
+                                />
                             </div>
                         )}
                 </div>

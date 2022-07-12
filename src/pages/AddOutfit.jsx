@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
 
+import { AppContext } from '../components/AppContext'
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import SelectClothing from '../components/SelectClothing'
 
 const AddOutfit = () => {
+    const { outfit, setOutfit } = useContext(AppContext)
     const [addClothing, setAddClothing] = useState(false)
 
     return (
@@ -37,13 +39,36 @@ const AddOutfit = () => {
                 {/* Main */}
                 <div className="w-full pt-20 flex justify-center">
                     <div className="w-10/12">
-                        <p className='text-white'>Agregar prendas</p>
-                        <div
-                            onClick={() => setAddClothing(true)}
-                            className="w-28 h-28 cursor-pointer bg-gray-200 rounded-lg mt-4 flex justify-center items-center"
-                        >
-                            <PlusIcon className='h-8 w-8 text-gray-500' />
+                        <div>
+                            <p className='text-white font-semibold'>Agregar prendas</p>
+                            {!addClothing && (
+                                <div className="box-content relative h-52 overflow-x-auto overflow-hidden xl:overflow-visible">
+                                    <div className="absolute flex space-x-2 xl:relative xl:space-x-0 xl:grid xl:grid-cols-5 xl:gap-x-8">
+                                        <div
+                                            onClick={() => setAddClothing(true)}
+                                            className="w-28 h-32 cursor-pointer bg-gray-200 rounded-lg mt-4 flex justify-center items-center"
+                                        >
+                                            <PlusIcon className='h-8 w-8 text-gray-500' />
+                                        </div>
+
+                                        {outfit.map(prenda => (
+                                            <div
+                                                key={prenda.id}
+                                                className="w-28 h-32 cursor-pointer bg-gray-200 rounded-lg mt-4 flex justify-center items-center"
+                                            >
+                                                <img
+                                                    src={prenda.img}
+                                                    alt={prenda.id}
+                                                    className='w-full object-cover h-full rounded-lg'
+                                                />
+                                            </div>
+                                        ))}
+
+                                    </div>
+                                </div>
+                            )}
                         </div>
+
                     </div>
 
                 </div>

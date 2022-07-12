@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { CogIcon, PlusCircleIcon } from '@heroicons/react/outline'
-import { AppContext } from './AppContext'
 import { Link } from 'react-router-dom'
+
+import { AppContext } from './AppContext'
 
 const Navbar = () => {
     const { user } = useContext(AppContext);
@@ -14,12 +15,12 @@ const Navbar = () => {
                 <div className='w-full flex justify-center absolute bottom-16'>
                     <div className='bg-gray-100 w-8/12 md:w-7/12 xl:w-4/12 rounded-t-lg shadow-xl grid grid-rows-2'>
                         <button className='py-4 px-3 flex hover:bg-blue-100 rounded-t-lg border-b-2 border-solid'>
-                            <p className='flex-start text-xl'>Añadir una prenda</p>
+                            <p className='flex-start text-lg'>Añadir una prenda</p>
                         </button>
 
                         <Link to="/add-outfit">
                             <a className='py-4 px-3 flex hover:bg-blue-100'>
-                                <p className='flex-start text-xl'>Añadir un outfit</p>
+                                <p className='flex-start text-lg'>Añadir un outfit</p>
                             </a>
                         </Link>
                     </div>

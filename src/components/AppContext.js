@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
     console.log(user);
@@ -32,7 +33,9 @@ const AppContextProvider = ({ children }) => {
       value={{
         user,
         logout,
-        loginWithGoogle
+        loginWithGoogle,
+        outfit,
+        setOutfit
       }}
     >
       {children}

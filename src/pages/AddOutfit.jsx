@@ -1,15 +1,43 @@
 import React, { useState, useContext } from 'react'
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/outline'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { getFirestore, collection } from 'firebase/firestore'
 
 import { AppContext } from '../components/AppContext'
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import SelectClothing from '../components/SelectClothing'
+import { addDoc } from 'firebase/firestore'
 
 const AddOutfit = () => {
-    const { outfit, setOutfit } = useContext(AppContext)
+    const { outfit, setOutfit, user } = useContext(AppContext)
+
     const [addClothing, setAddClothing] = useState(false)
+    const [categoryOutfit, setCategoryOutfit] = useState('business')
+    const [weather, setWeather] = useState('templado')
+    const [error, setError] = useState('')
+
+    const navigate = useNavigate()
+
+    const createOutfit = () => {
+        const newOutfit = {
+            category: categoryOutfit,
+            weather: weather,
+            clothes: outfit,
+            userid: user.uid
+        }
+        const db = getFirestore();
+        const outfitRef = collection(db, "outfits");
+
+        if (outfit.length > 0) {
+            addDoc(outfitRef, newOutfit).then(() => {
+                navigate('/')
+                setOutfit([])
+            });
+        } else {
+            setError('El outfit no puede estar vacío')
+        }
+    }
 
     return (
         <>
@@ -31,18 +59,24 @@ const AddOutfit = () => {
                         </div>
 
                         <div className='flex justify-end items-center'>
-                            <Button texto="Listo" px="4" />
+                            <div onClick={() => createOutfit()}>
+                                <Button texto="Listo" px="4" />
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                {error && <p className='text-red-600 pt-20 pb-3 pl-7  font-semibold'>{error}</p>}
+                {!error && <div className='h-20 w-screen'></div>}
+
+
                 {/* Main */}
-                <div className="w-full pt-20 flex justify-center">
+                <div className="w-full flex justify-center">
                     <div className="w-10/12">
                         <div>
                             <p className='text-white font-semibold'>Agregar prendas</p>
                             {!addClothing && (
-                                <div className="box-content relative h-52 overflow-x-auto overflow-hidden xl:overflow-visible">
+                                <div className="box-content relative h-40 overflow-x-auto overflow-hidden xl:overflow-visible">
                                     <div className="absolute flex space-x-2 xl:relative xl:space-x-0 xl:grid xl:grid-cols-5 xl:gap-x-8">
                                         <div
                                             onClick={() => setAddClothing(true)}
@@ -67,6 +101,28 @@ const AddOutfit = () => {
                                     </div>
                                 </div>
                             )}
+                        </div>
+
+                        <div className='mt-1.5'>
+                            <p className='text-white font-semibold'>Seleccionar categoría</p>
+                            <div className='mt-3'>
+                                <select onChange={(e) => setCategoryOutfit(e.target.value)} defaultValue="business" className='py-1.5 px-1 rounded-lg' name="category" id="category">
+                                    <option value="casual">Casual</option>
+                                    <option value="business">Business</option>
+                                    <option value="salidas">Salidas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className='mt-5'>
+                            <p className='text-white font-semibold'>Seleccionar clima</p>
+                            <div className='mt-3'>
+                                <select onChange={(e) => setWeather(e.target.value)} defaultValue='templado' className='py-1.5 px-1 rounded-lg bg-gray-200' name="weather" id="weather">
+                                    <option value="invierno">Invierno</option>
+                                    <option value="templado">Templado</option>
+                                    <option value="verano">Verano</option>
+                                </select>
+                            </div>
                         </div>
 
                     </div>

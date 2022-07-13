@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import { Routes, Route, useNavigate, BrowserRouter } from 'react-router-dom';
 import AppContextProvider from './components/AppContext';
-import { fetchUser } from './utils/fetchUser';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import AddOutfit from './pages/AddOutfit';
+import ChooseOutfit from './pages/ChooseOutfit';
 
 const App = () => {
 
@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/add-outfit" element={<AddOutfit />} />
-
+          <Route path="/choose-outfit" element={<ChooseOutfit />} />
         </Routes>
       </BrowserRouter>
     </AppContextProvider>

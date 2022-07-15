@@ -1,13 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { ChevronLeftIcon, PlusIcon } from '@heroicons/react/outline'
 import { Link, useNavigate } from 'react-router-dom'
-import { getFirestore, collection } from 'firebase/firestore'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
 
 import { AppContext } from '../components/AppContext'
 import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import SelectClothing from '../components/SelectClothing'
-import { addDoc } from 'firebase/firestore'
 
 const AddOutfit = () => {
     const { outfit, setOutfit, user } = useContext(AppContext)

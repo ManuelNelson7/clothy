@@ -1,10 +1,15 @@
 import React, { useState, useContext } from 'react'
-import { AppContext } from '../components/AppContext'
 import { Link } from 'react-router-dom'
+import { getFirestore, getDocs, collection, query, where } from 'firebase/firestore'
+
+import { AppContext } from '../components/AppContext'
 import Button from './Button'
 
 const OutfitHome = () => {
-    const { outfitChosen } = useContext(AppContext)
+    const [outfitChosen, setOutfitChosen] = useState("")
+    const { user } = useContext(AppContext)
+
+    
 
     return (
         <div className='w-full flex justify-center'>
@@ -13,7 +18,7 @@ const OutfitHome = () => {
                 <h1 className='text-white text-3xl mt-8 font-bold'>Outfit del día</h1>
 
                 <div className='bg-gray-200 h-80 w-full mt-4 rounded-lg flex justify-center items-center'>
-                    {outfitChosen ? (
+                    {outfitChosen != "" ? (
                         <div>
                             <div className={`bg-white w-full object-cover rounded-md shadow-lg h-80 grid grid-cols-2 grid-rows-2 hover:opacity-90 cursor-pointer`}>
                                 {outfitChosen.clothes.map(prenda => (

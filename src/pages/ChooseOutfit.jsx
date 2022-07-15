@@ -1,13 +1,12 @@
 import { ChevronLeftIcon } from '@heroicons/react/outline'
 import React, { useEffect, useState, useContext } from 'react'
-import { getFirestore, getDocs, collection, query, where, orderBy, limit } from 'firebase/firestore'
+import { getFirestore, getDocs, collection, query, where} from 'firebase/firestore'
 
 import { AppContext } from '../components/AppContext'
-import Button from '../components/Button'
 import { Link, useNavigate } from 'react-router-dom'
 
 const ChooseOutfit = () => {
-  const { user, setOutfitChosen } = useContext(AppContext);
+  const { user, setOutfitChosen, createChoice } = useContext(AppContext);
   const [outfits, setOutfits] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -27,6 +26,7 @@ const ChooseOutfit = () => {
 
   const handleChoose = (look) => {
     setOutfitChosen(look)
+    createChoice(look)
     navigate("/")
   }
 
